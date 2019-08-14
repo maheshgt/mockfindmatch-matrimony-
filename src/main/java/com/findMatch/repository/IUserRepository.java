@@ -9,4 +9,6 @@ import com.findMatch.entity.User;
 public interface IUserRepository extends JpaRepository<User, Long>{
 
 	User findByphoneno(Long phoneno);
+
+	User findByprofileId(Long id);
 }

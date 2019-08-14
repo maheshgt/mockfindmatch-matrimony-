@@ -1,8 +1,5 @@
 package com.findMatch.dto;
 
-import java.time.LocalDateTime;
-import java.util.Date;
-
 public class UserDto {
 
 	private String name;
@@ -143,8 +140,10 @@ public class UserDto {
 		this.profileCreatedBy = profileCreatedBy;
 	}
 
-	public UserDto() {
-
-	}
+	/*
+	 * public UserDto() {
+	 * 
+	 * }
+	 */
 
 }

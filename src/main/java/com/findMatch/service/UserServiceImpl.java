@@ -51,13 +51,10 @@ public class UserServiceImpl implements IUserService{
 	
 	@Override
 	public ApiResponse login(LoginDto logindto) {
-		// TODO Auto-generated method stub
 		User user = userRepository.findByphoneno(logindto.getPhoneno());
 		  if(user == null) {
 			  
-			throw new RuntimeException("User doesn't exist.");
-			
-			  
+			throw new RuntimeException("User doesn't exist.");	  
 			
 		}
 		if(!user.getPassword().equals(logindto.getPassword())){
@@ -66,6 +63,11 @@ public class UserServiceImpl implements IUserService{
 			
 		}
 	    return  new ApiResponse(200, "Login Sucess", null);
+	}
+
+	@Override
+	public User getProfileDetails(Long id) {
+		return userRepository.findByprofileId(id);
 	}
 
 }

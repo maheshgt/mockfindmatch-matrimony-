@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 @Entity
@@ -19,8 +21,10 @@ private Long interestedId;
 private Long requestorId;
 private Long accepectedId;
 private String status;
-private Date requestDate;
-private Date acceptedDate;
+@Temporal(TemporalType.DATE)
+private Date requestSentDate;
+@Temporal(TemporalType.DATE)
+private Date requestProcessedDate;
 
 public Long getInterestedId() {
 	return interestedId;
@@ -46,17 +50,17 @@ public String getStatus() {
 public void setStatus(String status) {
 	this.status = status;
 }
-public Date getRequestDate() {
-	return requestDate;
+public Date getRequestSentDate() {
+	return requestSentDate;
 }
-public void setRequestDate(Date requestDate) {
-	this.requestDate = requestDate;
+public void setRequestSentDate(Date requestSentDate) {
+	this.requestSentDate = requestSentDate;
 }
 public Date getAcceptedDate() {
-	return acceptedDate;
+	return requestProcessedDate;
 }
-public void setAcceptedDate(Date acceptedDate) {
-	this.acceptedDate = acceptedDate;
+public void setRequestProcessedDate(Date requestProcessedDate) {
+	this.requestProcessedDate = requestProcessedDate;
 }
 
 
