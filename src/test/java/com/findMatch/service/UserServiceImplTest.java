@@ -28,7 +28,6 @@ public class UserServiceImplTest {
 	@InjectMocks
 	UserServiceImpl userServiceImpl;
 
-
 	@Test
 	public void testRegistration() throws ParseException {
 		UserDto userentity = new UserDto();
@@ -47,13 +46,9 @@ public class UserServiceImplTest {
 		userentity.setProfileCreatedBy("father");
 		// userentity.setProfileId(12345l);
 		userentity.setReligion("hindu");
-		
+
 		userentity.setEmailId("vikas@gmail.com");
 		userentity.setProfiletype("gold");
-
-		LoginDto logindto = new LoginDto();
-		logindto.setPhoneno(8792441259l);
-		logindto.setPassword("ok");
 
 		User user1 = new User();
 		user1.setCreatedDate(new Date());
@@ -105,6 +100,37 @@ public class UserServiceImplTest {
 		ApiResponse ApiResponse = userServiceImpl.login(logindto);
 		assertEquals(200, ApiResponse.getStatus());
 
+	}
+
+	@Test
+	public void testViewProfile() {
+		User userentity = new User();
+		// userentity.setAge(24);
+		userentity.setCaste("gupta");
+		userentity.setName("vikash");
+		userentity.setCity("bangalore");
+		userentity.setDob("01/10/1991");
+		userentity.setGender("male");
+		userentity.setHeight("5.3");
+		userentity.setLanguage("hiondi");
+		userentity.setOccupation("private");
+		userentity.setState("bangalore");
+		userentity.setPassword("ok");
+		userentity.setPhoneno(8792441259l);
+		userentity.setProfileCreatedBy("father");
+		// userentity.setProfileId(12345l);
+		userentity.setReligion("hindu");
+
+		userentity.setEmailId("vikas@gmail.com");
+		userentity.setProfiletype("gold");
+
+		userentity.setCreatedDate(new Date());
+		userentity.setProfileId(12345l);
+		userentity.setAge(28);
+		Mockito.when(userRepository.findByprofileId(Mockito.anyLong())).thenReturn(userentity);
+		User s = userServiceImpl.getProfileDetails(12345l);
+		assertNotNull(s);
+		assertEquals(userentity.getCity(), s.getCity());
 	}
 
 }
